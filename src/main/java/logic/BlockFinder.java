@@ -25,7 +25,6 @@ public class BlockFinder {
         ArrayList<BlockResult> results = new ArrayList<>();
 
         for (Collision collision : collisions) {
-            System.out.println(collisions.size());
             int possibleBlockCount = 0;
             int newPosX = collision.x - offsetX;
             int newPosY = collision.y - offsetY;
@@ -34,43 +33,49 @@ public class BlockFinder {
             newPosX = newPosX % Constants.BLOCK_WIDTH;
             newPosY = newPosY % Constants.BLOCK_WIDTH;
 
-            List<Block> possibleBlocks = new ArrayList<>();
-            for (BlockResult result : results)
-                if (result.gridX == gridX && result.gridY == gridY)
-                    possibleBlocks.add(result.block);
+            List<BlockResult> possibleBlocks = new ArrayList<>();
+            List<BlockResult> toRemove = new ArrayList<>();
+            for (BlockResult result : results) {
+                if (result.gridX == gridX && result.gridY == gridY) {
+                    possibleBlocks.add(result);
+                    toRemove.add(result);
+                }
+            }
 
-            if (possibleBlocks.isEmpty())
-                possibleBlocks = allBlocks;
+            results.removeAll(toRemove);
+
+            if (possibleBlocks.isEmpty()) {
+                for (Block block : allBlocks) {
+                    for (Facing facing : block.availableFacings) {
+                        possibleBlocks.add(new BlockResult(block, 0, 0, facing));
+                    }
+                }
+            }
 
 
-            for (Block block : possibleBlocks) {
+            for (BlockResult blockResult : possibleBlocks) {
 
-                if (!collision.topLimited && block.topLimited)
+                if (!collision.topLimited && blockResult.block.topLimited)
                     continue;
 
-                for (int i = 0; i < block.availableFacings.length; i++) {
-                    Facing facing = block.availableFacings[i];
-                    BlockHitBox hitBox = block.getHitBoxesWithFacing(facing);
+                Facing facing = blockResult.facing;
+                BlockHitBox hitBox = blockResult.block.getHitBoxesWithFacing(facing);
 
-                    //left
-                    if (!(hitBox.x <= newPosX && hitBox.x >= newPosX - collision.leftExtended)) {
-                        if (offsetX == 1 && offsetY == 0)
-                            System.out.println("A");
-                        continue;
-                    }
-                    //up
-                    if (!(hitBox.y <= newPosY && hitBox.y >= newPosY - collision.upExtended))
-                        continue;
-                    //right
-                    if (!(hitBox.x + hitBox.width >= newPosX + collision.width && hitBox.x + hitBox.width <= newPosX + collision.width + collision.rightExtended))
-                        continue;
-                    //down
-                    if (!(hitBox.y + hitBox.height >= newPosY + collision.height && hitBox.y + hitBox.height <= newPosY + collision.height + collision.downExtended))
-                        continue;
+                //left
+                if (!(hitBox.x <= newPosX && hitBox.x >= newPosX - collision.leftExtended))
+                    continue;
+                //up
+                if (!(hitBox.y <= newPosY && hitBox.y >= newPosY - collision.upExtended))
+                    continue;
+                //right
+                if (!(hitBox.x + hitBox.width >= newPosX + collision.width && hitBox.x + hitBox.width <= newPosX + collision.width + collision.rightExtended))
+                    continue;
+                //down
+                if (!(hitBox.y + hitBox.height >= newPosY + collision.height && hitBox.y + hitBox.height <= newPosY + collision.height + collision.downExtended))
+                    continue;
 
-                    possibleBlockCount++;
-                    results.add(new BlockResult(block, gridX, gridY, facing));
-                }
+                possibleBlockCount++;
+                results.add(new BlockResult(blockResult.block, gridX, gridY, facing));
             }
 
             if (possibleBlockCount <= 0) {
