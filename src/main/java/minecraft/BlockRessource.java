@@ -29,8 +29,8 @@ public class BlockRessource {
         allBlocks.add(new Block("Stair", "st", new BlockHitBox(8, 0, 8, 16), new Facing[]{ Facing.NORTH, Facing.SOUTH, Facing.WEST, Facing.EAST }, true, "side_stair.png"));
         allBlocks.add(new Block("Corner Stair", "cst", new BlockHitBox(8, 0, 8, 8), new Facing[]{ Facing.NORTH, Facing.SOUTH, Facing.WEST, Facing.EAST }, true, "corner_stair.png"));
         allBlocks.add(new Block("Cocoa Age 1", "cb0", new BlockHitBox(6, 1, 4, 4), new Facing[]{ Facing.NORTH, Facing.SOUTH, Facing.WEST, Facing.EAST }, false, "cocoa_0.png"));
-        allBlocks.add(new Block("Cocoa Age 2", "cb1", new BlockHitBox(5, 1, 5, 5), new Facing[]{ Facing.NORTH, Facing.SOUTH, Facing.WEST, Facing.EAST }, false, "cocoa_1.png"));
-        allBlocks.add(new Block("Cocoa Age 3", "cb2", new BlockHitBox(4, 1, 6, 6), new Facing[]{ Facing.NORTH, Facing.SOUTH, Facing.WEST, Facing.EAST }, false, "cocoa_2.png"));
+        allBlocks.add(new Block("Cocoa Age 2", "cb1", new BlockHitBox(5, 1, 6, 6), new Facing[]{ Facing.NORTH, Facing.SOUTH, Facing.WEST, Facing.EAST }, false, "cocoa_1.png"));
+        allBlocks.add(new Block("Cocoa Age 3", "cb2", new BlockHitBox(4, 1, 8, 8), new Facing[]{ Facing.NORTH, Facing.SOUTH, Facing.WEST, Facing.EAST }, false, "cocoa_2.png"));
         allBlocks.add(new Block("Double Chest", "dc", new BlockHitBox(1, 0, 14, 15), new Facing[]{ Facing.NORTH, Facing.SOUTH, Facing.WEST, Facing.EAST }, false, "double_chest.png"));
         allBlocks.add(new Block("Cake 1 Bite", "ck1b", new BlockHitBox(1, 1, 14, 12), new Facing[]{ Facing.NORTH, Facing.SOUTH, Facing.WEST, Facing.EAST }, false, "cake_bite_1.png"));
         allBlocks.add(new Block("Cake 2 Bite", "ck2b", new BlockHitBox(1, 1, 14, 10), new Facing[]{ Facing.NORTH, Facing.SOUTH, Facing.WEST, Facing.EAST }, false, "cake_bite_2.png"));
