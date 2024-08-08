@@ -21,7 +21,7 @@ public class BlockRessource {
         allBlocks.add(new Block("Head", "h", new BlockHitBox(4, 0, 8, 8), new Facing[]{ Facing.NORTH, Facing.SOUTH, Facing.WEST, Facing.EAST }, false, "head.png"));
         allBlocks.add(new Block("Flower Pot", "pot", new BlockHitBox(5, 5, 6, 6), new Facing[]{ Facing.NORTH}, false, "flower_pot.png"));
         allBlocks.add(new Block("Fence", "f", new BlockHitBox(6, 6, 4, 4), new Facing[]{ Facing.NORTH }, false, "fence.png"));
-        allBlocks.add(new Block("Fence (North)", "f(n)", new BlockHitBox(6, 0, 4, 12), new Facing[]{ Facing.NORTH, Facing.SOUTH, Facing.WEST, Facing.EAST }, false, "fence_north.png"));
+        allBlocks.add(new Block("Fence (North)", "f(n)", new BlockHitBox(6, 0, 4, 10), new Facing[]{ Facing.NORTH, Facing.SOUTH, Facing.WEST, Facing.EAST }, false, "fence_north.png"));
         allBlocks.add(new Block("Fence Gate", "fg", new BlockHitBox(6, 0, 4, 16), new Facing[]{ Facing.NORTH, Facing.WEST}, false, "fence_gate.png"));
         allBlocks.add(new Block("Pane", "p", new BlockHitBox(7, 0, 2, 16), new Facing[]{ Facing.NORTH, Facing.WEST }, false, "pane.png"));
         allBlocks.add(new Block("Short Pane", "sp", new BlockHitBox(7, 0, 2, 8), new Facing[]{ Facing.NORTH, Facing.SOUTH, Facing.WEST, Facing.EAST }, false, "short_pane.png"));
