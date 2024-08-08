@@ -207,8 +207,9 @@ public class CollisionCanvas extends JFrame {
             return new Point(x, y);
         }
 
-        private void drawGrid(Graphics2D g, Color color, int gap) {
+        private void drawGrid(Graphics2D g, Color color, BasicStroke stroke, int gap) {
             g.setColor(color);
+            g.setStroke(stroke);
             for (int i = 0; i <= gridSize * BLOCK_COUNT * Constants.BLOCK_WIDTH; i += gap)
                 g.drawLine(i, 0, i, gridSize * BLOCK_COUNT * Constants.BLOCK_WIDTH);
             for (int i = 0; i <= gridSize * BLOCK_COUNT * Constants.BLOCK_WIDTH; i += gap)
@@ -251,13 +252,13 @@ public class CollisionCanvas extends JFrame {
             g2.scale(zoomFactor, zoomFactor);
 
             // Draw 1xgrid
-            drawGrid(g2, Color.LIGHT_GRAY, gridSize);
+            drawGrid(g2, Color.LIGHT_GRAY, new BasicStroke(1), gridSize);
 
             // Draw 4xgrid
-            drawGrid(g2, Color.GRAY, gridSize * Constants.BLOCK_WIDTH / 4);
+            drawGrid(g2, Color.GRAY, new BasicStroke(2), gridSize * Constants.BLOCK_WIDTH / 4);
 
             // Draw 16xgrid
-            drawGrid(g2, Color.BLACK, gridSize * Constants.BLOCK_WIDTH);
+            drawGrid(g2, Color.BLACK, new BasicStroke(3), gridSize * Constants.BLOCK_WIDTH);
 
 
             // Draw existing rectangles
