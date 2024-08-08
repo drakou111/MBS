@@ -79,6 +79,9 @@ public class CollisionCanvas extends JFrame {
                     } else if (currentCollision != null) {
                         if (currentCollision.width == 0 || currentCollision.height == 0) return;
 
+                        // Clamp the collision to the valid range
+                        currentCollision = clampCollisionToBounds(currentCollision);
+
                         collisions.add(currentCollision);
                         currentCollision = null;
                         repaint();
@@ -183,9 +186,6 @@ public class CollisionCanvas extends JFrame {
                 float newZoomFactor = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, zoomFactor + delta));
 
                 if (newZoomFactor != zoomFactor) {
-                    //TODO fix this shit
-                    //TODO-2 prevent creating stuff outside of borders
-
                     // Update zoomFactor and gridSize
                     zoomFactor = newZoomFactor;
                     gridSize = Math.round(INITIAL_GRID_SIZE * zoomFactor);
@@ -213,6 +213,34 @@ public class CollisionCanvas extends JFrame {
                 g.drawLine(i, 0, i, gridSize * BLOCK_COUNT * Constants.BLOCK_WIDTH);
             for (int i = 0; i <= gridSize * BLOCK_COUNT * Constants.BLOCK_WIDTH; i += gap)
                 g.drawLine(0, i, gridSize * BLOCK_COUNT * Constants.BLOCK_WIDTH, i);
+        }
+
+        private Collision clampCollisionToBounds(Collision collision) {
+            int maxBound = BLOCK_COUNT * Constants.BLOCK_WIDTH;
+
+            // Clamp x and width
+            if (collision.x < 0) {
+                collision.width += collision.x; // Reduce width by the amount x is out of bounds
+                collision.x = 0; // Set x to 0
+            }
+            if (collision.x + collision.width > maxBound) {
+                collision.width = maxBound - collision.x; // Adjust width to stay within bounds
+            }
+
+            // Clamp y and height
+            if (collision.y < 0) {
+                collision.height += collision.y; // Reduce height by the amount y is out of bounds
+                collision.y = 0; // Set y to 0
+            }
+            if (collision.y + collision.height > maxBound) {
+                collision.height = maxBound - collision.y; // Adjust height to stay within bounds
+            }
+
+            // Ensure the collision is not negative in width or height
+            collision.width = Math.max(collision.width, 1);
+            collision.height = Math.max(collision.height, 1);
+
+            return collision;
         }
 
         @Override
