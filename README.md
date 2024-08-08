@@ -17,6 +17,10 @@ Press BACKSPACE to remove the last drawn hitbox.
 
 ![delete](https://github.com/user-attachments/assets/66924643-0d8a-4cfd-890f-dca8f8c20920)
 
+You can move around by dragging with the middle mouse button, and zoom in/out with the scroll wheel.
+
+![zoom](https://github.com/user-attachments/assets/2023378f-8077-4ea4-93cc-90d1829aebf3)
+
 You can click left (increment) or right (decrement) click on the edge of a collision box. It will display a number from 1 to 15 which means how far that direction can the block extend. For example, instead of specifying a jump like 1bm head butterfly by putting a full block for the momentum, you could put a 1x1 pixel at the top right of the momentum and a 1x1 pixel at the bottom left, then allow each to extend 15 pixels inwards. This will make it more flexible and allow it to find more combinations of blocks.
 
 ![edge](https://github.com/user-attachments/assets/922fffab-a0f8-42e8-9261-6e2fe015dee2)
