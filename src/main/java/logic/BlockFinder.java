@@ -26,8 +26,8 @@ public class BlockFinder {
 
         for (Collision collision : collisions) {
             int possibleBlockCount = 0;
-            int newPosX = collision.x - offsetX;
-            int newPosY = collision.y - offsetY;
+            int newPosX = collision.x - offsetX + Constants.BLOCK_WIDTH;
+            int newPosY = collision.y - offsetY + Constants.BLOCK_WIDTH;
             int gridX = newPosX / Constants.BLOCK_WIDTH;
             int gridY = newPosY / Constants.BLOCK_WIDTH;
             newPosX = newPosX % Constants.BLOCK_WIDTH;

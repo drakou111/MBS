@@ -44,6 +44,13 @@ public class CollisionCanvas extends JFrame {
                     collisions.remove(collisions.size() - 1);
                     repaint();
                 }
+                // DEBUG
+                /*
+                else if (e.getKeyCode() == KeyEvent.VK_T) {
+                    collisions = BlockFinder.findBlocks(collisions,15,15);
+                    repaint();
+                }
+                */
             }
         });
     }
