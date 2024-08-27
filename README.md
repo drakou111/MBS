@@ -29,8 +29,15 @@ Press ENTER once you're ready to search for all momentum combinations.
 
 ![final](https://github.com/user-attachments/assets/5d2158a6-cfc9-473c-aa97-293a8a7c0400)
 
+When looking at the possible combinations of blocks, you can choose to use blocks of different versions. Currently available versions are 1.8.9 and 1.20.4
+
+![version](https://github.com/user-attachments/assets/f251deaf-33c4-4e35-867d-d942364be563)
+
+
 ## List of blocks
 The list of blocks ignores some duplicated hitboxs (for example, chest is same as egg and cactus...). Here is a list of all possible blocks:
+
+### 1.8.9:
 - Block
 - Dragon egg
 - Anvil
@@ -51,5 +58,32 @@ The list of blocks ignores some duplicated hitboxs (for example, chest is same a
 - Cocoa (age 1 to 3)
 - Double chest (similar to normal chest, but with 1 extra pixel)
 - Cake (with all bite stages)
+
+### 1.20.4:
+- Block
+- Dragon egg
+- Stairs
+- Fences (and all its facings)
+- Fence gate
+- Trapdoor
+- Cobblewall
+- Thin cobblewall
+- Single pane
+- Pane
+- Short pane
+- Candles
+- Amethyst
+- Chorus plant
+- Turtle egg
+- Sniffer egg
+- Piston base
+- Piston head
+- Double chest (similar to normal chest, but with 1 extra pixel)
+- Cake (with all bite stages)
+- Head
+- Piglin head
+- Anvil
+- Pickles
+- Grindstone
 
 Let me know if I'm forgetting any block!
