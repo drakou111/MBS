@@ -1,8 +1,11 @@
 package minecraft;
 
 public class BlockHitBox {
+    // x and y is the top left corner of the block
     public int x;
     public int y;
+
+    // width and height is the width and height of the block
     public int width;
     public int height;
 
@@ -13,22 +16,7 @@ public class BlockHitBox {
         this.height = height;
     }
 
-    public int[] getTopLeft() {
-        return new int[]{ this.x, this.y};
-    }
-
-    public int[] getTopRight() {
-        return new int[]{ this.x + this.width - 1, this.y};
-    }
-
-    public int[] getBottomLeft() {
-        return new int[]{ this.x, this.y + this.height - 1};
-    }
-
-    public int[] getBottomRight() {
-        return new int[]{ this.x + this.width - 1, this.y + this.height - 1};
-    }
-
+    // Rotates the block to a certain direction (NORTH is default)
     public BlockHitBox getRotated(Facing facing) {
         switch (facing) {
             case NORTH -> { return new BlockHitBox(this.x, this.y, this.width, this.height); }

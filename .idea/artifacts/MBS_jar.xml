@@ -1,8 +1,8 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="MBS:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/MBS_jar</output-path>
-    <root id="archive" name="MomentumBlockShuffler.jar">
-      <element id="module-output" name="MomentumBlockShuffler" />
+    <root id="archive" name="MBS.jar">
+      <element id="module-output" name="MBS" />
     </root>
   </artifact>
 </component>

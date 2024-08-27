@@ -8,24 +8,21 @@ import java.util.List;
 
 public class Block {
     public String name;
-    public String shortName;
     public BlockHitBox hitBox;
     public Facing[] availableFacings;
     public boolean topLimited;
-    public String imagePath; // Path to the image file
+    public String imagePath;
 
-    public Block(String name, String shortName, BlockHitBox hitBox, boolean topLimited, String imagePath) {
+    public Block(String name, BlockHitBox hitBox, boolean topLimited, String imagePath) {
         this.name = name;
-        this.shortName = shortName;
         this.hitBox = hitBox;
         this.availableFacings = new Facing[] {Facing.NORTH, Facing.SOUTH, Facing.WEST, Facing.EAST };
         this.topLimited = topLimited;
         this.imagePath = imagePath;
     }
 
-    public Block(String name, String shortName, BlockHitBox hitBox, Facing[] availableFacings, boolean isOnlyTop, String imagePath) {
+    public Block(String name, BlockHitBox hitBox, Facing[] availableFacings, boolean isOnlyTop, String imagePath) {
         this.name = name;
-        this.shortName = shortName;
         this.hitBox = hitBox;
         this.availableFacings = availableFacings;
         this.topLimited = isOnlyTop;
@@ -58,6 +55,6 @@ public class Block {
 
     @Override
     public String toString() {
-        return "{name: " + name + ", shortname: " + shortName + ", topLimited: " + topLimited + "}";
+        return "{name: " + name + ", topLimited: " + topLimited + "}";
     }
 }

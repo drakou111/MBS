@@ -20,8 +20,9 @@ public class BlockFinder {
         });
     }
 
-    public static ArrayList<BlockResult> getBlockGrid(ArrayList<Collision> collisions, int offsetX, int offsetY) {
-        List<Block> allBlocks = BlockRessource.allBlocks();
+    // Find all combinations of blocks from a given X and Y offset.
+    public static ArrayList<BlockResult> getBlockGrid(ArrayList<Collision> collisions, int offsetX, int offsetY, List<Block> allBlocks) {
+
         ArrayList<BlockResult> results = new ArrayList<>();
 
         for (Collision collision : collisions) {
@@ -86,6 +87,7 @@ public class BlockFinder {
         return results;
     }
 
+    // Cut horizontally and vertically, and get all of the sub-collisions from a given x/y offset.
     public static ArrayList<Collision> findBlocks(ArrayList<Collision> collisions, int offsetX, int offsetY) {
         ArrayList<Collision> newCollisions = new ArrayList<>();
 
@@ -100,6 +102,7 @@ public class BlockFinder {
         return newCollisions;
     }
 
+    // Simulates "cutting" horizontally at every BLOCK_WIDTH length (16), with an offset.
     private static ArrayList<Collision> cutHorizontally(Collision collision, int offset) {
         ArrayList<Collision> result = new ArrayList<>();
 
@@ -143,6 +146,7 @@ public class BlockFinder {
         return result;
     }
 
+    // Simulates "cutting" vertically at every BLOCK_WIDTH length (16), with an offset.
     private static ArrayList<Collision> cutVertically(Collision collision, int offset) {
         ArrayList<Collision> result = new ArrayList<>();
 

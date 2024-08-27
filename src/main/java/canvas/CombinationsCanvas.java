@@ -1,6 +1,9 @@
 package canvas;
 
+import canvas.Collision;
 import logic.BlockFinder;
+import minecraft.Block;
+import minecraft.BlockRessource;
 import minecraft.BlockResult;
 import minecraft.Constants;
 
@@ -20,6 +23,7 @@ public class CombinationsCanvas extends JFrame {
     private JLabel combinationLabel;
     private Timer timer;
     private int frameRate = 1000; // 1 second per frame
+    private JComboBox<String> versionComboBox;
 
     public CombinationsCanvas(ArrayList<Collision> collisions) {
         setTitle("Momentum Combinations");
@@ -27,16 +31,25 @@ public class CombinationsCanvas extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        // Prepare all combinations
-        allCombinations = new ArrayList<>();
-        for (int x = 0; x < Constants.BLOCK_WIDTH; x++) {
-            for (int y = 0; y < Constants.BLOCK_WIDTH; y++) {
-                ArrayList<Collision> updatedCollisions = BlockFinder.findBlocks(new ArrayList<>(collisions), x, y);
-                ArrayList<BlockResult> results = BlockFinder.getBlockGrid(updatedCollisions, x, y);
-                if (results != null && !results.isEmpty())
-                    allCombinations.add(results);
+        // Version dropdown
+        String[] versions = {"1.8.9", "1.20.4"};
+        versionComboBox = new JComboBox<>(versions);
+        versionComboBox.setSelectedIndex(0); // Default to 1.8.9
+        versionComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                updateCombinations(collisions);
+                updateCombinationLabel();
             }
-        }
+        });
+
+        JPanel topPanel = new JPanel(new FlowLayout());
+        topPanel.add(new JLabel("Select Version:"));
+        topPanel.add(versionComboBox);
+        add(topPanel, BorderLayout.NORTH);
+
+        // Prepare initial combinations
+        updateCombinations(collisions);
 
         // Create a label to display the current combination
         combinationLabel = new JLabel();
@@ -88,7 +101,7 @@ public class CombinationsCanvas extends JFrame {
 
         add(buttonPanel, BorderLayout.SOUTH);
 
-        // Initialize the timer
+        // Initialize the timer to display all possible blocks
         timer = new Timer(frameRate, new ActionListener() {
             private int frame = 0;
 
@@ -99,6 +112,27 @@ public class CombinationsCanvas extends JFrame {
             }
         });
         timer.start();
+    }
+
+    private void updateCombinations(ArrayList<Collision> collisions) {
+        String selectedVersion = (String) versionComboBox.getSelectedItem();
+        List<Block> allBlocks;
+        if (selectedVersion.equals("1.20.4")) {
+            allBlocks = BlockRessource.allBlocks1_20_4();
+        } else {
+            allBlocks = BlockRessource.allBlocks1_8_9();
+        }
+
+        allCombinations = new ArrayList<>();
+        for (int x = 0; x < Constants.BLOCK_WIDTH; x++) {
+            for (int y = 0; y < Constants.BLOCK_WIDTH; y++) {
+                ArrayList<Collision> updatedCollisions = BlockFinder.findBlocks(new ArrayList<>(collisions), x, y);
+                ArrayList<BlockResult> results = BlockFinder.getBlockGrid(updatedCollisions, x, y, allBlocks);
+                if (results != null && !results.isEmpty())
+                    allCombinations.add(results);
+            }
+        }
+        currentIndex = 0; // Reset to the first combination
     }
 
     private void updateCombinationLabel() {
@@ -143,8 +177,7 @@ public class CombinationsCanvas extends JFrame {
 
                 AffineTransform transform = new AffineTransform();
                 switch (block.facing) {
-                    case NORTH -> {
-                    }
+                    case NORTH -> {}
                     case SOUTH -> transform.rotate(Math.PI, x + gridSize / 2, y + gridSize / 2);
                     case WEST -> transform.rotate(Math.PI + Math.PI / 2, x + gridSize / 2, y + gridSize / 2);
                     case EAST -> transform.rotate(Math.PI / 2, x + gridSize / 2, y + gridSize / 2);
