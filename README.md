@@ -83,6 +83,7 @@ The list of blocks ignores some duplicated hitboxs (for example, chest is same a
 - Head
 - Piglin head
 - Anvil
+- Bell
 - Pickles
 - Grindstone
 
