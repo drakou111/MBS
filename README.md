@@ -4,6 +4,9 @@ This is a tool that I made that lets you easily check every possbile way to buil
 
 <img width="960" alt="example" src="https://github.com/user-attachments/assets/ba58e170-7556-404b-a85f-c505479c604d">
 
+## How to install
+You can download a .jar file or the source code in the [releases](https://github.com/drakou111/MBS/releases) of this repository. Simply download it and execute it.
+
 ## How to use
 Dragging your mouse with left click will create a blue collision box.
 
