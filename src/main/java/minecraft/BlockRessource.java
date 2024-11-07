@@ -26,7 +26,7 @@ public class BlockRessource {
         allBlocks.add(new Block("Fence Gate", new BlockHitBox(6, 0, 4, 16), new Facing[]{ Facing.NORTH, Facing.WEST}, false, "fence_gate.png"));
         allBlocks.add(new Block("Pane", new BlockHitBox(7, 0, 2, 16), new Facing[]{ Facing.NORTH, Facing.WEST }, false, "pane.png"));
         allBlocks.add(new Block("Short Pane", new BlockHitBox(7, 0, 2, 8), new Facing[]{ Facing.NORTH, Facing.SOUTH, Facing.WEST, Facing.EAST }, false, "short_pane.png"));
-        allBlocks.add(new Block("Brewing Stand", new BlockHitBox(7, 7, 2, 2), new Facing[]{ Facing.NORTH}, false, "brewing_stand.png"));
+        allBlocks.add(new Block("Brewing Stand", new BlockHitBox(7, 7, 2, 2), new Facing[]{ Facing.NORTH}, true, "brewing_stand.png"));
         allBlocks.add(new Block("Stair", new BlockHitBox(8, 0, 8, 16), new Facing[]{ Facing.NORTH, Facing.SOUTH, Facing.WEST, Facing.EAST }, true, "side_stair.png"));
         allBlocks.add(new Block("Corner Stair", new BlockHitBox(8, 0, 8, 8), new Facing[]{ Facing.NORTH, Facing.SOUTH, Facing.WEST, Facing.EAST }, true, "corner_stair.png"));
         allBlocks.add(new Block("Cocoa Age 1", new BlockHitBox(6, 1, 4, 4), new Facing[]{ Facing.NORTH, Facing.SOUTH, Facing.WEST, Facing.EAST }, false, "cocoa_0.png"));
